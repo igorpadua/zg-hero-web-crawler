@@ -1,8 +1,10 @@
 package scraping
 
+import groovy.transform.TypeChecked
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
 
+@TypeChecked
 class PegaLink {
 
     static String linkTiss() {
