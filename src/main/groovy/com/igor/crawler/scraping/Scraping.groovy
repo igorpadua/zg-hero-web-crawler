@@ -1,4 +1,4 @@
-package scraping
+package com.igor.crawler.scraping
 
 import groovy.transform.TypeChecked
 import groovyx.net.http.HttpBuilder
@@ -28,7 +28,7 @@ class Scraping {
         }.get { Download.toFile(delegate, arquivo) }
     }
 
-    static Map tabelaHistoricoVersoes() {
+    static List<Map> tabelaHistoricoVersoes() {
         // Pega pagina
         Document pagina = pegaPagina(PegaLink.historicoVersoes())
         // Pega tabela
@@ -37,7 +37,7 @@ class Scraping {
         List<Element> linhas = tabela.getElementsByTag('tr')
         linhas.remove(0)
 
-        Map dados = [Compentacia: '', Publicacao: '', InicioVigencia: '']
+        List<Map> dados = []
 
         // Pega dados
         linhas.each { linha ->
@@ -53,10 +53,12 @@ class Scraping {
                 // Inicio de Vigencia
                 String inicioVigencia = colunas[2].text()
 
-                // Colocar no Map
-                dados.Compentacia = competencia
-                dados.Publicacao = publicacao
-                dados.InicioVigencia = inicioVigencia
+                // Adiciona dados
+                dados.add([
+                    competencia: competencia,
+                    publicacao: publicacao,
+                    inicioVigencia: inicioVigencia
+                ])
             }
         }
         return dados

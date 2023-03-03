@@ -1,4 +1,4 @@
-package scraping
+package com.igor.crawler.scraping
 
 import groovy.transform.TypeChecked
 import org.jsoup.nodes.Document
