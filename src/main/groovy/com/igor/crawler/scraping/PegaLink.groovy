@@ -47,11 +47,11 @@ class PegaLink {
         return link
     }
 
-    static String radarTiss() {
+    static String tabelaRalacionais() {
         // Pega a página do site do TISS
         Document page = Scraping.pegaPagina(linkTiss())
         // Pega a div que tem o link do radar do TISS
-        Element element = page.getElementsByClass('callout').get(3)
+        Element element = page.getElementsByClass('callout').get(2)
         // Pega o link do radar do TISS
         String link = element.getElementsByTag('a').attr('href')
 
