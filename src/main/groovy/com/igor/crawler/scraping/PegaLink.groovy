@@ -48,11 +48,22 @@ class PegaLink {
     }
 
     static String tabelaRalacionais() {
-        // Pega a página do site do TISS
+        // Pega a página do site tabela de relacionais
         Document page = Scraping.pegaPagina(linkTiss())
-        // Pega a div que tem o link do radar do TISS
+        // Pega a div que tem o link da tabela de relacionais
         Element element = page.getElementsByClass('callout').get(2)
-        // Pega o link do radar do TISS
+        // Pega o link do radar da tabela de relacionais
+        String link = element.getElementsByTag('a').attr('href')
+
+        return link
+    }
+
+    static String tabelaRelacionaisErrosAns() {
+        // Pega a página Tabela de Relacionais
+        Document page = Scraping.pegaPagina(tabelaRalacionais())
+        // Pega a div que tem o link da tabela de relacionais
+        Element element = page.getElementsByClass('callout').first()
+        // Pega o link da tabela de relacionais
         String link = element.getElementsByTag('a').attr('href')
 
         return link
