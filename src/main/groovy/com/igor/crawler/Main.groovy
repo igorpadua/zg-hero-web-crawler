@@ -8,7 +8,7 @@ import com.igor.crawler.DAO.criaCSV
 @TypeChecked
 static void main(String[] args) {
     // 1. Baixa arquivo Componente de Comunicação
-    Scraping.downloadArquivo(PegaLink.linkVersaoMesAno(), 'padrao-de-comunicao-TISS.zip')
+    Scraping.downloadArquivo(PegaLink.versaoAnoMesComponeteComunicacao(), 'padrao-de-comunicao-TISS.zip')
     // 2. Tabela histórico de versões
     List<Map> tabelaHistoricoVersoes = Scraping.tabelaHistoricoVersoes()
     // Criar CSV

@@ -68,4 +68,17 @@ class PegaLink {
 
         return link
     }
+
+    static String versaoAnoMesComponeteComunicacao() {
+        // Pega a página do site do TISS
+        Document page = Scraping.pegaPagina(linkVersaoMesAno())
+        // Pega a tabela que tem o Componente de Comunicação
+        Element element = page.getElementsByTag("tbody").first()
+        // Pega a linha que tem o Componente de Comunicação
+        Element comunicacao = element.getElementsByTag("tr").last()
+        // Pega o link do download
+        String link = comunicacao.getElementsByTag("a").attr("href")
+
+        return link
+    }
 }
