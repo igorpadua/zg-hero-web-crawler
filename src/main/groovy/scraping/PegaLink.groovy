@@ -5,7 +5,7 @@ import org.jsoup.nodes.Element
 
 class PegaLink {
 
-    String linkTiss() {
+    static String linkTiss() {
         // Pega a página do site da ANS
         Document page = Scraping.pegaPagina('https://www.gov.br/ans/pt-br')
         // Pega a div que tem o Espaço do Prestador de Serviços de Saúde
@@ -21,5 +21,27 @@ class PegaLink {
         String link2 = element2.getElementsByTag('a').attr('href')
 
         return link2
+    }
+
+    static String linkVersaoMesAno() {
+        // Pega a página do site do TISS
+        Document page = Scraping.pegaPagina(linkTiss())
+        // Pega a div que tem o link da versão do mês e ano
+        Element element = page.getElementsByClass('callout').first()
+        // Pega o link da versão do mês e ano
+        String link = element.getElementsByTag('a').attr('href')
+
+        return link
+    }
+
+    static String historicoVersoes() {
+        // Pega a página do site do TISS
+        Document page = Scraping.pegaPagina(linkTiss())
+        // Pega a div que tem o link do histórico de versões
+        Element element = page.getElementsByClass('callout').last()
+        // Pega o link do histórico de versões
+        String link = element.getElementsByTag('a').attr('href')
+
+        return link
     }
 }
