@@ -38,7 +38,7 @@ class PegaLink {
         // Pega a página do site do TISS
         Document page = Scraping.pegaPagina(linkTiss())
         // Pega a div que tem o link do histórico de versões
-        Element element = page.getElementsByClass('callout').last()
+        Element element = page.getElementsByClass('callout').get(1)
         // Pega o link do histórico de versões
         String link = element.getElementsByTag('a').attr('href')
 
